@@ -21,8 +21,11 @@ namespace DijkstraLogic
             }
 
             var notVisited = graph.Nodes.ToList();
-            var track = new Dictionary<Node, DijkstraData>();
-            track[start] = new DijkstraData { Price = 0, Previous = null };
+            var track = new Dictionary<Node, DijkstraData>
+            {
+                { start, new DijkstraData { Price = 0, Previous = null } },
+            };
+
 
             while (true)
             {
@@ -40,9 +43,10 @@ namespace DijkstraLogic
                 if (toOpen == null) return null;
                 if (toOpen == end) break;
 
-                foreach (var e in toOpen.IncidentEdges)
-                //foreach (var e in toOpen.IncidentEdges.Where(z => z.from == toOpen))
+                //foreach (var e in toOpen.IncidentEdges)
+                foreach (var e in toOpen.IncidentEdges.Where(z => z.from == toOpen))
                 {
+
                     var currentPrice = track[toOpen].Price + weights[e];
                     var nextNode = e.OtherNode(toOpen);
                     if (!track.ContainsKey(nextNode) || track[nextNode].Price > currentPrice)
@@ -50,8 +54,7 @@ namespace DijkstraLogic
                         track[nextNode] = new DijkstraData { Previous = toOpen, Price = currentPrice };
                     }
                 }
-
-                notVisited.Remove(toOpen);
+                notVisited.Remove(toOpen);  
             }
 
             var result = new List<Node>();
@@ -78,14 +81,19 @@ namespace DijkstraLogic
             weights[graph.Connect(5, 7)] = 4.4;
             weights[graph.Connect(5, 6)] = 5;
 
-            var path = Dijkstra(graph, weights, graph[0], graph[3]).Select(n => n.number);
+            /*for(int i = 0; i < graph.Length; i++)
+            {
+                var path = Dijkstra(graph, weights, graph[0], graph[i]).Select(n => n.number);
+                foreach (var p in path)
+                {
+                    Console.Write( $"{p} , ");
+
+                }
+                Console.WriteLine($"track from 0 to {i}");
+            }*/
             var path2 = Dijkstra(graph, weights, graph[0], graph[6]).Select(n => n.number);
 
-            foreach (var p in path)
-            {
-                Console.Write(p + " , ");
-                
-            }
+           
             Console.WriteLine();
 
             foreach (var p in path2)

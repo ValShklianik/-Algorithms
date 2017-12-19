@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DijkstraLogic.GraphLogic
+namespace PrimAlgorithmLogic.GraphLogic
 {
     public class Edge
     {
@@ -26,6 +26,22 @@ namespace DijkstraLogic.GraphLogic
             if (from == node) return to;
             return from;
         }
+
+        public override string ToString()
+        {
+            return $"({to}, {from})";
+        }
+
+        public override bool Equals(object obj)
+        {
+            return (((Edge) obj)?.from == from || ((Edge) obj)?.from == to) &&
+                   (((Edge) obj)?.to == from || ((Edge) obj)?.to == to);
+        }
+
+        public override int GetHashCode()
+        {
+            return to.number + from.number;
+        }
     }
 
     public class Node
@@ -33,7 +49,7 @@ namespace DijkstraLogic.GraphLogic
 
         readonly List<Edge> edges = new List<Edge>();
         public readonly int number;
-        
+
         public Node(int number)
         {
             this.number = number;
@@ -64,6 +80,11 @@ namespace DijkstraLogic.GraphLogic
             return edge;
         }
 
+        public override string ToString()
+        {
+            return number.ToString();
+        }
+
         /*public static void Disconnect(Edge edge)
         {
             edge.from.edges.Remove(edge);
@@ -80,9 +101,9 @@ namespace DijkstraLogic.GraphLogic
             nodes = Enumerable.Range(0, nodesCount).Select(z => new Node(z)).ToList();
         }
 
-        public int Length { get => nodes.Count;  }
+        public int Length { get => nodes.Count; }
 
-        public Node this[int index] { get => nodes[index];  }
+        public Node this[int index] { get => nodes[index]; }
 
 
         public IEnumerable<Node> Nodes
