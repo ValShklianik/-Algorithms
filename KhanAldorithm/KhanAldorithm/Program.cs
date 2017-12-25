@@ -10,19 +10,30 @@ namespace KhanAldorithm
     public class KhanAlg
     {
         private int[][] graph;
+        private bool[] used;
+        private int[] matching;
+        public int N { get; set; }
+        private int K { get; set; }
 
-        public KhanAlg(int[][] adjacencyList)
+        public KhanAlg(int n, int k, int[][] adjacencyList)
         {
+            N = n;
+            K = k;
+            matching = new int[k];
+            for (var v = 0; v < k; v++)
+            {
+                matching[v] = -1;
+            }
             graph = adjacencyList;
         }
 
-        private bool DFS(bool[] used, int[] matching, int vertex)
+        private bool DFS(int vertex)
         {
             if (used[vertex]) return false;
             used[vertex] = true;
             foreach (var to in graph[vertex])
             {
-                if (matching[to] == -1 || DFS(used, matching, matching[to]))
+                if (matching[to] == -1 || DFS(matching[to]))
                 {
                     matching[to] = vertex;
                     return true;
@@ -33,11 +44,14 @@ namespace KhanAldorithm
 
         public int[] getMatch()
         {
-            int[] matching = graph.Select(x => -1).ToArray();
-            for (int i = 0; i < matching.Length; i++)
+            for (int i = 0; i < N; i++)
             {
-                bool[] used = matching.Select(x => false).ToArray();
-                DFS(used, matching, i);
+                used = new bool[N];
+                for (var v = 0; v < N; v++)
+                {
+                    used[v] = false;
+                }
+                DFS(i);
             }
             return matching;
         }
@@ -47,15 +61,13 @@ namespace KhanAldorithm
     {
         static void Main(string[] args)
         {
-            KhanAlg alg = new KhanAlg(new []
+            KhanAlg alg = new KhanAlg(5, 4, new []
             {
-                new []{1}, 
-                new []{2, 0},
-                new []{3, 4, 1},
-                new []{5, 2},
-                new []{6, 2},
-                new []{3},
-                new []{4}
+                new []{0}, 
+                new []{0, 1, 2},
+                new []{1},
+                new []{2},
+                new []{1, 2, 3, 10}
             });
             int[] result = alg.getMatch();
             for (int i = 0; i < result.Length; i++)
