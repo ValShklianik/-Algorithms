@@ -110,13 +110,5 @@ namespace EulerCycle
                 return nodes.SelectMany(z => z.IncidentEdges).Distinct();
             }
         }
-
-        /*public static Graph MakeGraph(params int[] incidentNodes)
-        {
-            var graph = new Graph(incidentNodes.Max() + 1);
-            for (int i = 0; i < incidentNodes.Length - 1; i += 2)
-                graph.Connect(incidentNodes[i], incidentNodes[i + 1]);
-            return graph;
-        }*/
     }
 }

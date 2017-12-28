@@ -7,16 +7,7 @@ namespace MyHashTable
     {
         static void Main(string[] args)
         {
-            //Random rng = new Random();
-            //bool flag = true;
-            //HashTable table = new HashTable();
-            //while (flag)jgg
-            //{
-            //    KeyedItem item = new KeyedItem(rng.Next(0, 1000000000));
-            //    flag = table.TableInsert(item);
-            //}
-            //table.ShowHashTable();
-            //Console.ReadKey();
+            
             HashTable<long> table = new HashTable<long>(79);
             table.Insert(200);
             table.Insert(300);

@@ -1,24 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.SqlServer.Server;
 
 namespace KhanAldorithm
 {
     public class KhanAlg
     {
-        private int[][] graph;
+        private readonly int[][] graph;
         private bool[] used;
-        private int[] matching;
-        public int N { get; set; }
-        private int K { get; set; }
+        private readonly int[] matching;
 
         public KhanAlg(int n, int k, int[][] adjacencyList)
         {
-            N = n;
-            K = k;
             matching = new int[k];
             for (var v = 0; v < k; v++)
             {
@@ -42,12 +33,12 @@ namespace KhanAldorithm
             return false;
         }
 
-        public int[] getMatch()
+        public int[] GetMatch(int n)
         {
-            for (int i = 0; i < N; i++)
+            for (int i = 0; i < n; i++)
             {
-                used = new bool[N];
-                for (var v = 0; v < N; v++)
+                used = new bool[n];
+                for (var v = 0; v < n; v++)
                 {
                     used[v] = false;
                 }
@@ -57,24 +48,24 @@ namespace KhanAldorithm
         }
     }
 
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             KhanAlg alg = new KhanAlg(5, 4, new []
             {
                 new []{0}, 
-                new []{0, 1, 2},
-                new []{1},
-                new []{2},
-                new []{1, 2, 3, 10}
+                new []{0,2},
+                new []{0},
+                new []{2,3},
+                new []{0}
             });
-            int[] result = alg.getMatch();
+            int[] result = alg.GetMatch(5);
             for (int i = 0; i < result.Length; i++)
             {
                 if (result[i] != -1)
                 {
-                    Console.WriteLine($"({i}, {result[i]})");
+                    Console.WriteLine($"A : {i} -> B: {result[i]}");
                 }
             }
         }

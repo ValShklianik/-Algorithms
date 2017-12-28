@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kraskal", "Kraskal\Kraskal.csproj", "{479255A1-15EA-42B8-BA3F-D19EA34DC229}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleRunner", "ConsoleRunner\ConsoleRunner.csproj", "{CAB0D1DD-4DC2-421D-8093-EEC186D998DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{479255A1-15EA-42B8-BA3F-D19EA34DC229}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{479255A1-15EA-42B8-BA3F-D19EA34DC229}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{479255A1-15EA-42B8-BA3F-D19EA34DC229}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{479255A1-15EA-42B8-BA3F-D19EA34DC229}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAB0D1DD-4DC2-421D-8093-EEC186D998DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAB0D1DD-4DC2-421D-8093-EEC186D998DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAB0D1DD-4DC2-421D-8093-EEC186D998DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAB0D1DD-4DC2-421D-8093-EEC186D998DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {375D2009-826A-442D-BA19-DB68EA3FF2F0}
+	EndGlobalSection
+EndGlobal
